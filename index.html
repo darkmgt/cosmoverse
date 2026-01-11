@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmoverse | Explore Space</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  font-size: 14px;
+}
+
+.music-btn:hover {
+  background: rgba(255,255,255,0.25);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+
+  /* SPACE GIF BACKGROUND */
+  background: 
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+    url("space.gif") center center / cover no-repeat fixed;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #aaa;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* HERO */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background: url("space-bg.jpg") center/cover no-repeat;
+}
+
+.hero h2 {
+  font-size: 48px;
+  max-width: 600px;
+}
+
+.hero p {
+  margin: 20px 0;
+  max-width: 500px;
+  color: #ccc;
+}
+
+.hero button {
+  width: fit-content;
+  padding: 14px 26px;
+  border-radius: 30px;
+  border: none;
+  background: #6fa8ff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero button:hover {
+  background: #4f8df0;
+}
+
+/* SECTION */
+.section {
+  padding: 60px 40px;
+}
+
+.section h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* SOLAR SYSTEM */
+.planets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.planet {
+  background: rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.planet:hover {
+  transform: translateY(-10px) scale(1.03);
+  background: rgba(255,255,255,0.12);
+}
+
+.planet img {
+  width: 300px;   /* 🔥 BIGGER PLANET IMAGE */
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.planet p {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* PHENOMENA */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 25px;
+}
+
+.card {
+  background: linear-gradient(145deg, #0c1238, #05081f);
+  padding: 20px;
+  border-radius: 18px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* ABOUT */
+.about {
+  max-width: 900px;
+  line-height: 1.8;
+  color: #ddd;
+}
+
+/* FOOTER */
+footer {
+  padding: 30px;
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+  <!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="interstellar.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
+<header>
+  <h1>🌌 COSMOVERSE</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#solar">Solar System</a>
+    <a href="#phenomena">Phenomena</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <h2>Explore the Universe Beyond Earth</h2>
+  <p>
+    Cosmoverse is an interactive space exploration website designed using
+    new media principles, combining visuals, motion, and user interaction.
+  </p>
+  <button onclick="scrollToSection('solar')">Start Exploring</button>
+</section>
+
+<!-- SOLAR SYSTEM -->
+<section class="section" id="solar">
+  <h3>Solar System Explorer</h3>
+  <div class="planets">
+    <div class="planet" onclick="showPlanet('Mercury')">
+      <img src="mercury.gif">
+      <p>Mercury</p>
+    </div>
+    <div class="planet" onclick="showPlanet('Earth')">
+      <img src="earth.gif">
+      <p>Earth</p>
+    </div>
+    <div class="planet" onclick="showPlanet('Mars')">
+      <img src="mars.gif">
+      <p>Mars</p>
+    </div>
+    <div class="planet" onclick="showPlanet('Jupiter')">
+      <img src="jupiter.gif">
+      <p>Jupiter</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHENOMENA -->
+<section class="section" id="phenomena">
+  <h3>Space Phenomena</h3>
+  <div class="cards">
+    <div class="card">
+      <img src="blackhole.gif">
+      <h4>Black Hole</h4>
+      <p>Regions of spacetime with extremely strong gravity.</p>
+    </div>
+    <div class="card">
+      <img src="nebula.gif">
+      <h4>Nebula</h4>
+      <p>Clouds of gas and dust where stars are born.</p>
+    </div>
+    <div class="card">
+      <img src="supernova.gif">
+      <h4>Supernova</h4>
+      <p>Explosive death of a massive star.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <h3>About This Project</h3>
+  <div class="about">
+    <p>
+      Cosmoverse is a group project developed for the subject
+      <strong>AEN2033 – New Media Design</strong>.
+      This website explores how digital media, interactivity, and visual
+      storytelling can be applied in web-based design.
+    </p>
+    <p>
+      The project emphasizes user experience, multimedia integration,
+      and interactive navigation as core elements of new media.
+    </p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Cosmoverse | AEN2033 New Media Design
+</footer>
+
+<script>
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+function showPlanet(name) {
+  alert(name + " is selected");
+}
+
+/* 🎵 BACKGROUND MUSIC LOGIC */
+const music = document.getElementById("bgMusic");
+
+/* Play music after first user interaction */
+document.addEventListener("click", () => {
+  if (music.paused) {
+    music.volume = 0.4;
+    music.play();
+  }
+}, { once: true });
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+</script>
+
+</body>
+</html>
